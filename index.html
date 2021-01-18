@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Welcome-Manoj Adhikari </title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <!-- Custom fonts for this template -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Merriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Custom styles for this template -->
+  <link href="css/coming-soon.min.css" rel="stylesheet">
+<style>
+</style>
+</head>
+
+<body>
+
+  <div class="overlay"></div>
+  
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="mp4/esp1.mp4" type="video/mp4">
+  </video>
+  
+  <div class="masthead">
+
+
+    <div class="masthead-bg"></div>
+    <div class="container h-100">
+      <div class="row h-100">
+
+        <div class="col-8 my-auto">
+
+          <div class="masthead-content text-white py-5 py-md-0">
+          
+            <img id="image_id" class="rounded-circle mr-5 mb-2"
+                height="200"
+                width = "200">
+            <h1 id="fullname" class="mb-3 mt-2 animate__animated animate__zoomIn"></h1>
+           
+          <h4>
+        <a href="" class="typewrite text-success" data-period="2000" data-type='[ "Loves Coding", "Photography", "Travelling", "Writting..." ]'>
+          <span class="wrap"></span>
+        </a>
+      </h4>
+                 
+            </div>
+          </div>
+           <div class="col-12 my-auto">
+           <div class="card" style="width: 30rem;">
+  <div class="card-body">
+   
+    <p id="bio" class="card-text text-primary font-weight-bold"></p>
+    <h6 id="location" class="text-center"></h6>
+  </div>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <div class="social-icons">
+    <ul class="list-unstyled text-center mb-0">
+    <li class="list-unstyled-item">
+        <a id="github">
+          <i class="fab fa-github"></i>
+        </a>
+      </li>
+      <li class="list-unstyled-item">
+        <a href="https://twitter.com/ascian_one">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+      <li class="list-unstyled-item">
+        <a href="https://www.facebook.com/ascian.one/">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+      <li class="list-unstyled-item">
+        <a href="https://www.instagram.com/ascian_one/?hl=en">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+<script>//made by vipul mirajkar thevipulm.appspot.com
+var TxtType = function(el, toRotate, period) {
+        this.toRotate = toRotate;
+        this.el = el;
+        this.loopNum = 0;
+        this.period = parseInt(period, 10) || 2000;
+        this.txt = '';
+        this.tick();
+        this.isDeleting = false;
+    };
+
+    TxtType.prototype.tick = function() {
+        var i = this.loopNum % this.toRotate.length;
+        var fullTxt = this.toRotate[i];
+
+        if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+        } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+        }
+
+        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+        var that = this;
+        var delta = 200 - Math.random() * 100;
+
+        if (this.isDeleting) { delta /= 2; }
+
+        if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+        } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+        }
+
+        setTimeout(function() {
+        that.tick();
+        }, delta);
+    };
+
+    window.onload = function() {
+        var elements = document.getElementsByClassName('typewrite');
+        for (var i=0; i<elements.length; i++) {
+            var toRotate = elements[i].getAttribute('data-type');
+            var period = elements[i].getAttribute('data-period');
+            if (toRotate) {
+              new TxtType(elements[i], JSON.parse(toRotate), period);
+            }
+        }
+        // INJECT CSS
+        var css = document.createElement("style");
+        css.type = "text/css";
+        css.innerHTML = ".typewrite > .wrap { border-right: 0.08em solid #fff}";
+        document.body.appendChild(css);
+    };
+    </script>
+<script>
+fetch("https://api.github.com/users/jonamadk")
+.then(response => response.json())
+.then(function(data){
+   console.log(data)
+   let followers_count=data['followers']
+   document.getElementById('image_id').src=data['avatar_url']
+   document.getElementById('fullname').textContent=data['name']
+   document.getElementById('bio').textContent=data['bio']
+   document.getElementById('location').textContent=data['location']
+   document.getElementById('github').href=data['html_url']
+ 
+
+})
+   
+</script>
+
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js">
+  
+  </script>
+
+  <!-- Custom scripts for this template -->
+  <script src="js/coming-soon.min.js"></script>
+
+</body>
+
+</html>
