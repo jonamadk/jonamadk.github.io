@@ -172,6 +172,7 @@ fetch("https://api.github.com/users/jonamadk")
    document.getElementById('image_id').src=data['avatar_url']
    document.getElementById('fullname').textContent=data['name']
    document.getElementById('bio').textContent=data['bio']
+   document.getElementById('bio').style.textAlign = 'center';
    document.getElementById('location').textContent=data['location']
    document.getElementById('github').href=data['html_url']
  
