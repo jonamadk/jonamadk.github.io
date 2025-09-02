@@ -1,0 +1,66 @@
+body {
+    background-color: #f8fafc; /* A very light gray, almost white */
+}
+
+main#about {
+    min-height: 100vh;
+}
+
+/* On mobile, sometimes the viewport height is tricky. 
+   This makes sure it uses the available space reliably */
+@supports (height: 100dvh) {
+  main#about {
+    min-height: 100dvh;
+  }
+}
+
+/* Prevent body scroll when mobile menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Custom style for scrolled header in dark mode */
+html.dark header.shadow-md {
+    background-color: rgba(15, 23, 42, 0.85); /* slate-900 with opacity */
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+}
+
+/* Media Queries for Responsiveness */
+
+@media (max-width: 767px) {
+    /* Reduce heading sizes on mobile for the hero section */
+    main#about h2.text-5xl {
+        font-size: 2.25rem; /* ~36px */
+    }
+    main#about h1.text-6xl {
+        font-size: 3rem; /* ~48px */
+    }
+    main#about h3.text-2xl {
+        font-size: 1.5rem; /* ~24px */
+    }
+
+    /* Reduce font size for all other section headings on mobile */
+    section h2 {
+        font-size: 2.25rem; /* 36px */
+    }
+}
+
+
+@media (max-width: 480px) {
+    /* Further reduce heading sizes on very small screens for the hero section */
+    main#about h2.text-5xl {
+        font-size: 1.875rem; /* ~30px */
+    }
+    main#about h1.text-6xl {
+        font-size: 2.5rem; /* ~40px */
+    }
+    main#about h3.text-2xl {
+        font-size: 1.25rem; /* ~20px */
+    }
+    
+    /* Reduce font size for all other section headings on small mobile */
+    section h2 {
+        font-size: 1.875rem; /* 30px */
+    }
+}
