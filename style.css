@@ -64,3 +64,24 @@ html.dark header.shadow-md {
         font-size: 1.875rem; /* 30px */
     }
 }
+
+/* Fix for header items overlapping on tablet screens */
+@media (min-width: 768px) and (max-width: 1023px) {
+    /* Reduce logo font size on tablet */
+    header .container .flex-1 > a {
+        font-size: 1.25rem; /* text-xl */
+    }
+    
+    /* Hide the "Let's Talk" button in the header to create more space for the navigation links */
+    header .container nav + div > a[href="#contact"] {
+        display: none;
+    }
+}
+
+/* Add space between logo and navigation links */
+@media (min-width: 768px) {
+    header .container > div:first-child {
+        margin-right: 2rem; /* Adjust this value to increase/decrease space */
+    }
+}
+
