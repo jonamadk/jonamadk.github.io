@@ -5,38 +5,41 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 @media print{.page{max-width:none;padding:0}.navigation,.publication-filters,.skip-link,footer>a{display:none}.profile{padding-bottom:20px}.portrait{width:125px;height:145px}section{margin-bottom:25px}.publication{break-inside:avoid}.publication[hidden]{display:grid!important}a{color:var(--ink)}body{font-size:11pt}h1{font-size:30pt}h2{font-size:20pt}}
 
-/* Education: three equal columns separated by vertical rules. */
+/* Shared rows keep degree, institution, details, dates, and locations aligned. */
 .education-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  row-gap: 8px;
 }
 .education-grid .education-entry {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 18px;
+  display: grid;
+  grid-template-rows: subgrid;
+  grid-row: span 5;
   min-width: 0;
   margin: 0;
   padding: 0 24px;
+  gap: inherit;
 }
-.education-grid .education-entry:first-child { padding-left: 0; }
-.education-grid .education-entry:last-child { padding-right: 0; }
+.education-grid .education-entry > div { display: contents; }
 .education-grid .education-entry + .education-entry {
   border-left: 1px solid var(--line);
 }
-.education-meta { text-align: left; }
-.education-meta .date, .education-location { display: block; }
-.education-entry .education-meta p {
-  font-size: 14px;
-  color: var(--muted);
+.education-grid h3, .education-grid p {
+  margin: 0;
   line-height: 1.6;
 }
-.education-location { margin-top: 3px !important; }
+.education-grid .education-meta p {
+  font-size: 14px;
+  color: var(--muted);
+}
+.education-grid .date { padding-top: 12px; }
 @media (max-width: 700px) {
-  .education-grid { grid-template-columns: 1fr; }
+  .education-grid { grid-template-columns: 1fr; row-gap: 0; }
   .education-grid .education-entry {
-    padding: 20px 0;
-    gap: 12px;
+    grid-row: auto;
+    grid-template-rows: none;
+    padding: 24px 0;
+    gap: 8px;
   }
   .education-grid .education-entry:first-child { padding-top: 0; }
   .education-grid .education-entry:last-child { padding-bottom: 0; }
